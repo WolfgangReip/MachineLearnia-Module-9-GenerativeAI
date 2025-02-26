@@ -22,3 +22,22 @@ def summarize(conversation: str) -> str:
     chain = prompt | llm | StrOutputParser()
     
     return chain.invoke(conversation)
+
+
+
+def call_model(state: State, conversation: str) -> dict:
+    llm = ChatOpenAI(
+        openai_api_key=os.getenv("OPENAI_API_KEY"),
+        model=os.getenv("OPENAI_MODEL"),
+        temperature=0.2,         
+    )
+    history = state.get("history", "")
+    if history:
+        system_message = f"Summarize of the conversation earlier: {history}"
+        messages = [SystemMessage(content=system_message)] + state["messages"] 
+    else:
+        system_messages = System_PROMPT.format(conversation = conversation_summary)
+        messages = [SystemMessage(content=system_message)] + state["messages"]
+
+    response = llm.invoke(messages)
+    return {"messages": response}
