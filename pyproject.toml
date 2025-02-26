@@ -1,0 +1,22 @@
+[project]
+name = "machinelearnia-module-9-generativeai"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "WolfgangReip",email = "wolf.reip@gmail.com"}
+]
+readme = "README.md"
+requires-python = "3.11.5"
+dependencies = [
+    "langchain-core (>=0.3.39,<0.4.0)",
+    "langchain-openai (>=0.3.7,<0.4.0)",
+    "fastapi (>=0.115.8,<0.116.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "python-dotenv (>=1.0.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
